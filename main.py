@@ -70,7 +70,7 @@ def contact_mail():
         msg=MIMEText(data["message"])
         msg["subject"]=data["subject"]
         msg["from"]=data["email"]
-        msg["to"]="ripivi1957@pricegh.com"
+        msg["to"]="trikodetechnologies@gmail.com"
         server=smtplib.SMTP("smtp.gmail.com",587)
         server.starttls()
         server.login(os.getenv("EMAIL"),os.getenv("PASSWORD"))
