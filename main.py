@@ -43,9 +43,9 @@ def about():
 def contact():
     return render_template("contact.html",active_page="contact")
 
-@app.route("/project",methods=["GET"])
-def project():
-    return render_template("project.html",active_page="project")
+# @app.route("/project",methods=["GET"])
+# def project():
+#     return render_template("project.html",active_page="project")
 
 @app.route("/feature",methods=["GET"])
 def feature():
