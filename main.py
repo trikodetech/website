@@ -93,7 +93,7 @@ def contact_quote():
         print(msg)
         msg["subject"]=f"New Free Quote Request from {data["name"]} for {data["service"]}"
         msg["from"]=data["email"]
-        msg["to"]="ripivi1957@pricegh.com"
+        msg["to"]="trikodetechnologies@gmail.com"
         server=smtplib.SMTP("smtp.gmail.com",587)
         server.starttls()
         server.login(os.getenv("EMAIL"),os.getenv("PASSWORD"))
