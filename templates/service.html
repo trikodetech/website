@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>TRIKODE TECHNOLOGIES</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/static/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/static/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    {% include 'header.html' %}
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 mb-5">
+        <div class="container py-5">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Services</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Services</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center">
+                <div class="bg-primary mb-3 mx-auto" style="width: 60px; height: 2px;"></div>
+                <h1 class="display-5 mb-5">Our Services</h1>
+            </div>
+            <div class="row g-0 service-row">
+                <div class="col-md-6 col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="service-item border h-100 p-5">
+                        <div class="btn-square bg-light rounded-circle mb-4" style="width: 49px; height: 49px;">
+                            <img class="img-fluid" src="/static/img/shield.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">Compliance Support</h4>
+                        <p class="mb-4">Ensure your organization meets global compliance standards and industry regulations.</p>
+                        <a class="btn mt-auto" href="/services/compliance"><i class="fa fa-arrow-right text-white me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="service-item border h-100 p-5">
+                        <div class="btn-square bg-light rounded-circle mb-4" style="width: 49px; height: 49px;">
+                            <img class="img-fluid" src="/static/img/padlock.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">Security Services</h4>
+                        <p class="mb-4">Proactive strategies to assess risks and build strong internal security foundations.</p>
+                        <a class="btn mt-auto" href="/services/security"><i class="fa fa-arrow-right text-white me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="service-item border h-100 p-5">
+                        <div class="btn-square bg-light rounded-circle mb-4" style="width: 49px; height: 49px;">
+                            <img class="img-fluid" src="/static/img/bug.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">VAPT Services</h4>
+                        <p class="mb-4">Thorough testing of applications and networks to detect and fix vulnerabilities.</p>
+                        <a class="btn mt-auto" href="/services/vapt"><i class="fa fa-arrow-right text-white me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 wow fadeIn" data-wow-delay="0.7s">
+                    <div class="service-item border h-100 p-5">
+                        <div class="btn-square bg-light rounded-circle mb-4" style="width: 49px; height: 49px;">
+                            <img class="img-fluid" src="/static/img/servers.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">IT Infrastructure Security</h4>
+                        <p class="mb-4">Secure your cloud and on-premise infrastructure with modern access and monitoring solutions.</p>
+                        <a class="btn mt-auto" href="/services/infrastructure"><i class="fa fa-arrow-right text-white me-3"></i>Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+        
+
+    {% include 'footer.html' %}
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="/static/lib/wow/wow.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/lib/easing/easing.min.js"></script>
+    <script src="/static/lib/waypoints/waypoints.min.js"></script>
+    <script src="/static/lib/counterup/counterup.min.js"></script>
+    <script src="/static/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/static/lib/lightbox/js/lightbox.min.js"></script>
+    <script src="/static/lib/isotope/isotope.pkgd.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/static/js/main.js"></script>
+</body>
+
+</html>
