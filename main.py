@@ -63,44 +63,97 @@ def testimonial():
 def team():
     return render_template("team.html")
 
-@app.route("/contact-mail",methods=["POST"])
-def contact_mail():
-    try:
-        data=request.form
-        msg=MIMEText(data["message"])
-        msg["subject"]=data["subject"]
-        msg["from"]=data["email"]
-        msg["to"]="trikodetechnologies@gmail.com"
-        server=smtplib.SMTP("smtp.gmail.com",587)
-        server.starttls()
-        server.login(os.getenv("EMAIL"),os.getenv("PASSWORD"))
-        server.sendmail(msg["from"],[msg["to"]],msg.as_string())
-        return redirect(url_for("contact",active_page="contact"))
-    except Exception as e:
-        return jsonify({"error":str(e)})
+# @app.route("/contact-mail",methods=["POST"])
+# def contact_mail():
+#     try:
+#         data=request.form
+#         msg=MIMEText(data["message"])
+#         msg["subject"]=data["subject"]
+#         msg["from"]=data["email"]
+#         msg["to"]="trikodetechnologies@gmail.com"
+#         server=smtplib.SMTP("smtp.gmail.com",587)
+#         server.starttls()
+#         server.login(os.getenv("EMAIL"),os.getenv("PASSWORD"))
+#         server.sendmail(msg["from"],[msg["to"]],msg.as_string())
+#         return redirect(url_for("contact",active_page="contact"))
+#     except Exception as e:
+#         return jsonify({"error":str(e)})
     
-@app.route("/contact-quote",methods=["POST"])
+# @app.route("/contact-quote",methods=["POST"])
+# def contact_quote():
+#     try:
+#         data=request.form
+#         msg=MIMEText(f"""
+#         Name: {data["name"]}
+#         Email: {data["email"]}
+#         Mobile: {data["phone"]}
+#         Service Intersted: {data["service"]}
+#         Special Note: {data["note"] if data["note"] else "N/A"}
+#         """)
+#         print(msg)
+#         msg["subject"]=f"New Free Quote Request from {data["name"]} for {data["service"]}"
+#         msg["from"]=data["email"]
+#         msg["to"]="trikodetechnologies@gmail.com"
+#         server=smtplib.SMTP("smtp.gmail.com",587)
+#         server.starttls()
+#         server.login(os.getenv("EMAIL"),os.getenv("PASSWORD"))
+#         server.sendmail(msg["from"],[msg["to"]],msg.as_string())
+#         return redirect(url_for("home"))
+#     except Exception as e:
+#         return jsonify({"error":str(e)})
+
+
+from flask import request, redirect, url_for, jsonify
+import smtplib, os
+from email.mime.text import MIMEText
+@app.route("/contact-mail", methods=["POST"])
+def contact_mail():
+   try:
+       data = request.form
+       # Build email
+       print(data)
+       body = f"""
+       Name: {data["name"]}
+       Email from : {data["email"]}
+       Message : {data["message"]}
+       """
+       msg = MIMEText(body)
+       msg["Subject"] = data["subject"]
+       msg["From"] = "noreply@trikodetechnologies.com"   # Always your domain email
+       msg["To"] = "info@trikodetechnologies.com"        # Your receiving domain email
+       # Send via Hostinger SMTP
+       server = smtplib.SMTP_SSL("smtp.hostinger.com", 465)
+       server.login(os.getenv("DOMAIN_EMAIL"), os.getenv("DOMAIN_EMAIL_PASSWORD"))
+       server.sendmail(msg["From"], [msg["To"]], msg.as_string())
+       server.quit()
+       return redirect(url_for("contact", active_page="contact"))
+   except Exception as e:
+       return jsonify({"error": str(e)})
+
+@app.route("/contact-quote", methods=["POST"])
 def contact_quote():
-    try:
-        data=request.form
-        msg=MIMEText(f"""
-        Name: {data["name"]}
-        Email: {data["email"]}
-        Mobile: {data["phone"]}
-        Service Intersted: {data["service"]}
-        Special Note: {data["note"] if data["note"] else "N/A"}
-        """)
-        print(msg)
-        msg["subject"]=f"New Free Quote Request from {data["name"]} for {data["service"]}"
-        msg["from"]=data["email"]
-        msg["to"]="trikodetechnologies@gmail.com"
-        server=smtplib.SMTP("smtp.gmail.com",587)
-        server.starttls()
-        server.login(os.getenv("EMAIL"),os.getenv("PASSWORD"))
-        server.sendmail(msg["from"],[msg["to"]],msg.as_string())
-        return redirect(url_for("home"))
-    except Exception as e:
-        return jsonify({"error":str(e)})
+   try:
+       data = request.form
+       # Build email body
+       body = f"""
+       Name: {data["name"]}
+       Email: {data["email"]}
+       Mobile: {data["phone"]}
+       Service Interested: {data["service"]}
+       Special Note: {data.get("note", "N/A")}
+       """
+       msg = MIMEText(body)
+       msg["Subject"] = f"New Free Quote Request from {data['name']} for {data['service']}"
+       msg["From"] = "noreply@trikodetechnologies.com"   # Authenticated sender
+       msg["To"] = "info@trikodetechnologies.com"        # Receiver
+       # Send via Hostinger SMTP
+       server = smtplib.SMTP_SSL("smtp.hostinger.com", 465)
+       server.login(os.getenv("DOMAIN_EMAIL"), os.getenv("DOMAIN_EMAIL_PASSWORD"))
+       server.sendmail(msg["From"], [msg["To"]], msg.as_string())
+       server.quit()
+       return redirect(url_for("home"))
+   except Exception as e:
+       return jsonify({"error": str(e)})
 
 @app.errorhandler(404)
 def page_not_found(e):
